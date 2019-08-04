@@ -52,6 +52,10 @@ plugins {
     id "org.liquibase.gradle" version "2.0.1"
     <%_ } _%>
     id "org.sonarqube" version "2.7.1"
+    <%_ if (serviceDiscoveryType === 'cl_eureka') { _%>
+    id 'io.freefair.lombok' version '3.6.4'
+    <%_ } _%>
+
     //jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
 }
 
@@ -244,6 +248,15 @@ repositories {
     mavenLocal()
     mavenCentral()
     jcenter()
+    <%_ if (serviceDiscoveryType === 'cl_eureka') { _%>
+    maven {
+        url "http://repo.oneplatform.build/nexus/content/repositories/releases/"
+    }
+    maven {
+        url "http://repo.oneplatform.build/nexus/content/repositories/thirdparty-snapshots"
+    }
+    <%_ } _%>
+
     <%_ if (devDatabaseType === 'oracle' || prodDatabaseType === 'oracle') { _%>
     // more information at https://blogs.oracle.com/dev2dev/entry/how_to_get_oracle_jdbc
     // https://discuss.gradle.org/t/support-for-maven-repositories-that-use-realm-based-sso/14456/5
@@ -258,7 +271,19 @@ repositories {
     //jhipster-needle-gradle-repositories - JHipster will add additional repositories
 }
 
+<%_ if (serviceDiscoveryType === 'cl_eureka') { _%>
+ext {
+    set('springLibsVersion', '3.0.11')
+}
+<%_ } _%>
 dependencies {
+
+<%_ if (serviceDiscoveryType === 'cl_eureka') { _%>
+    implementation "com.clarivate:spring-eiddo-client:${springLibsVersion}"
+    implementation "com.clarivate:spring-beacon:${springLibsVersion}"
+    implementation "com.clarivate:spring-eureka-client:${springLibsVersion}"
+<%_ } _%>
+
     // import JHipster dependencies BOM
     implementation platform("io.github.jhipster:jhipster-dependencies:${jhipster_dependencies_version}" )
 

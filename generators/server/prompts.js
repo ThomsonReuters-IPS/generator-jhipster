@@ -72,6 +72,11 @@ function askForServerSideOpts(meta) {
             message: 'Which service discovery server do you want to use?',
             choices: [
                 {
+                    value: 'cl_eureka',
+                    name: 'eureka configured with Clarivate microservice and eiddo properties'
+
+                },
+                {
                     value: 'eureka',
                     name: 'JHipster Registry (uses Eureka, provides Spring Cloud Config support and monitoring dashboards)'
                 },
@@ -84,7 +89,7 @@ function askForServerSideOpts(meta) {
                     name: 'No service discovery'
                 }
             ],
-            default: 'eureka'
+            default: 'cl_eureka'
         },
         {
             when: applicationType === 'monolith',

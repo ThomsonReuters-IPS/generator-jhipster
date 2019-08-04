@@ -252,6 +252,29 @@ security:
             user-info-uri: http://localhost:9080/auth/realms/jhipster/protocol/openid-connect/userinfo
 <%_ } _%>
 
+<%_ if (serviceDiscoveryType === 'cl_eureka') { _%>
+eureka:
+  instance:
+    preferIpAddress: false
+    securePortEnabled: false
+    nonSecurePortEnabled: true
+    virtualHostName: ${archaius.deployment.applicationId}.${archaius.deployment.stack}.${archaius.deployment.subenvironment}.${archaius.deployment.environment}
+    appname: ${archaius.deployment.applicationId}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    eurekaServerDNSName: dev.oneplatform.build
+    eurekaServerPort: 8080
+    eurekaServerURLContext: v2
+    region: ${archaius.deployment.region}
+    availabilityZones.us-west-2: defaultZone
+    useDnsForFetchingServiceUrls: false
+    #serviceUrl.defaultZone: http://eureka.us-west-2.dev.oneplatform.build:8080/v2
+    serviceUrl:
+      defaultZone: http://eureka.${archaius.deployment.region}.${archaius.deployment.domainName}:8080/v2
+    preferSameZoneEureka: true
+<%_ } _%>
+
 server:
     servlet:
         <%_ if ((applicationType === 'microservice' || applicationType === 'uaa') && !serviceDiscoveryType) { _%>
