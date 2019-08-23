@@ -52,7 +52,7 @@ plugins {
     id "org.liquibase.gradle" version "2.0.1"
     <%_ } _%>
     id "org.sonarqube" version "2.7.1"
-    <%_ if (serviceDiscoveryType === 'cl_eureka') { _%>
+    <%_ if (serviceClEureka === true) { _%>
     id 'io.freefair.lombok' version '3.6.4'
     <%_ } _%>
 
@@ -248,7 +248,7 @@ repositories {
     mavenLocal()
     mavenCentral()
     jcenter()
-    <%_ if (serviceDiscoveryType === 'cl_eureka') { _%>
+    <%_ if (serviceClEureka === true) { _%>
     maven {
         url "http://repo.oneplatform.build/nexus/content/repositories/releases/"
     }
@@ -271,14 +271,14 @@ repositories {
     //jhipster-needle-gradle-repositories - JHipster will add additional repositories
 }
 
-<%_ if (serviceDiscoveryType === 'cl_eureka') { _%>
+<%_ if (serviceClEureka === true) { _%>
 ext {
     set('springLibsVersion', '3.0.11')
 }
 <%_ } _%>
 dependencies {
 
-<%_ if (serviceDiscoveryType === 'cl_eureka') { _%>
+<%_ if (serviceClEureka === true) { _%>
     implementation "com.clarivate:spring-eiddo-client:${springLibsVersion}"
     implementation "com.clarivate:spring-beacon:${springLibsVersion}"
     implementation "com.clarivate:spring-eureka-client:${springLibsVersion}"
@@ -390,7 +390,9 @@ dependencies {
     <%_ if (messageBroker === 'kafka') { _%>
     implementation "org.springframework.kafka:spring-kafka"
     <%_ } _%>
+    <%_ if (authenticationType !== 'none') { _%>
     implementation "org.springframework.boot:spring-boot-starter-security"
+    <%_ } _%>
     implementation ("org.springframework.boot:spring-boot-starter-web<% if (reactive) { %>flux<% } %>") {
         exclude module: "spring-boot-starter-tomcat"
     }
@@ -436,9 +438,13 @@ dependencies {
     implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
     <%_ } _%>
     implementation "org.springframework.boot:spring-boot-starter-cloud-connectors"
+    <%_ if (authenticationType !== 'none') { _%>
     implementation "org.springframework.security:spring-security-config"
+    <%_ } _%>
     implementation "org.springframework.security:spring-security-data"
+    <%_ if (authenticationType !== 'none') { _%>
     implementation "org.springframework.security:spring-security-web"
+    <%_ } _%>
     <%_ if (websocket === 'spring-websocket') { _%>
     implementation "org.springframework.security:spring-security-messaging"
     <%_ } _%>
@@ -512,7 +518,10 @@ dependencies {
         exclude module: "junit"
         exclude group: "com.vaadin.external.google", module: "android-json"
     }
+    <%_ if (authenticationType === 'none') { _%>
     testImplementation "org.springframework.security:spring-security-test"
+    <%_ } _%>
+
     testImplementation "org.springframework.boot:spring-boot-test"
     testImplementation "org.junit.jupiter:junit-jupiter-engine"
     <%_ if (cucumberTests) { _%>

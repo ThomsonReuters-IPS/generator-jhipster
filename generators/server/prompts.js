@@ -37,7 +37,7 @@ function askForModuleName() {
 
 function askForServerSideOpts(meta) {
     if (!meta && this.existingProject) return;
-
+    const  serviceClEureka = this.serviceClEureka;
     const applicationType = this.applicationType;
     const reactive = this.reactive;
     let defaultPort = applicationType === 'gateway' ? '8080' : '8081';
@@ -66,16 +66,27 @@ function askForServerSideOpts(meta) {
             store: true
         },
         {
-            when: response => applicationType === 'gateway' || applicationType === 'microservice' || applicationType === 'uaa',
+            type: 'list',
+            name: 'serviceClEureka',
+            message: 'Are you building Clarivate service with Eureka discovery and eiddo properties?',
+            choices: [
+                {
+                    value: true,
+                    name: 'Yes'
+                },
+                {
+                    value: false,
+                    name: 'No'
+                }
+            ],
+            default: true
+        },
+        {
+            when: response =>  applicationType === 'gateway' || applicationType === 'microservice' || applicationType === 'uaa',
             type: 'list',
             name: 'serviceDiscoveryType',
             message: 'Which service discovery server do you want to use?',
             choices: [
-                {
-                    value: 'cl_eureka',
-                    name: 'eureka configured with Clarivate microservice and eiddo properties'
-
-                },
                 {
                     value: 'eureka',
                     name: 'JHipster Registry (uses Eureka, provides Spring Cloud Config support and monitoring dashboards)'
@@ -89,7 +100,7 @@ function askForServerSideOpts(meta) {
                     name: 'No service discovery'
                 }
             ],
-            default: 'cl_eureka'
+            default: false
         },
         {
             when: applicationType === 'monolith',
@@ -117,6 +128,10 @@ function askForServerSideOpts(meta) {
             message: `Which ${chalk.yellow('*type*')} of authentication would you like to use?`,
             choices: response => {
                 const opts = [
+                    {
+                        value: 'none',
+                        name: 'None'
+                    },
                     {
                         value: 'jwt',
                         name: 'JWT authentication (stateless, with a token)'
@@ -285,6 +300,7 @@ function askForServerSideOpts(meta) {
     const done = this.async();
 
     this.prompt(prompts).then(props => {
+        this.serviceClEureka = props.serviceClEureka;
         this.serviceDiscoveryType = props.serviceDiscoveryType;
         this.authenticationType = props.authenticationType;
 

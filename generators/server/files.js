@@ -344,6 +344,7 @@ const serverFiles = {
             ]
         },
         {
+            condition: generator => generator.authenticationType !== 'none',
             path: SERVER_TEST_SRC_DIR,
             templates: [
                 {

@@ -252,7 +252,7 @@ security:
             user-info-uri: http://localhost:9080/auth/realms/jhipster/protocol/openid-connect/userinfo
 <%_ } _%>
 
-<%_ if (serviceDiscoveryType === 'cl_eureka') { _%>
+<%_ if (serviceClEureka === true) { _%>
 eureka:
   instance:
     preferIpAddress: false
