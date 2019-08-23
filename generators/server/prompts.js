@@ -82,7 +82,7 @@ function askForServerSideOpts(meta) {
             default: true
         },
         {
-            when: response =>  applicationType === 'gateway' || applicationType === 'microservice' || applicationType === 'uaa',
+            when:   response =>  !response.serviceClEureka &&  (applicationType === 'gateway' || applicationType === 'microservice' || applicationType === 'uaa'),
             type: 'list',
             name: 'serviceDiscoveryType',
             message: 'Which service discovery server do you want to use?',
@@ -209,7 +209,7 @@ function askForServerSideOpts(meta) {
                 }
                 return opts;
             },
-            default: 0
+            default: 4
         },
         {
             when: response => response.databaseType === 'sql',
@@ -266,7 +266,7 @@ function askForServerSideOpts(meta) {
                     name: 'No - Warning, when using an SQL database, this will disable the Hibernate 2nd level cache!'
                 }
             ],
-            default: applicationType === 'microservice' || applicationType === 'uaa' ? 1 : 0
+            default: applicationType === 'microservice' || applicationType === 'uaa' ? 4 : 0
         },
         {
             when: response =>
@@ -291,7 +291,7 @@ function askForServerSideOpts(meta) {
                     name: 'Gradle'
                 }
             ],
-            default: 'maven'
+            default: 'gradle'
         }
     ];
 
@@ -303,6 +303,10 @@ function askForServerSideOpts(meta) {
         this.serviceClEureka = props.serviceClEureka;
         this.serviceDiscoveryType = props.serviceDiscoveryType;
         this.authenticationType = props.authenticationType;
+        if(this.serviceClEureka === true && this.serviceDiscoveryType !== false){
+            //this.log(chalk.bold.red("Since Clarivate Eureka service was selected, JHipster service discovery type should be set to 'No service discovery'  "));
+            this.serviceDiscoveryType = false;
+        }
 
         // JWT authentication is mandatory with Eureka, so the JHipster Registry
         // can control the applications

@@ -85,7 +85,7 @@ function askForApplicationType(meta) {
         name: 'applicationType',
         message: `Which ${chalk.yellow('*type*')} of application would you like to create?`,
         choices: applicationTypeChoices,
-        default: DEFAULT_APPTYPE
+        default: 'microservice'
     };
 
     if (meta) return PROMPT; // eslint-disable-line consistent-return
