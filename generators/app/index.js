@@ -400,7 +400,7 @@ module.exports = class extends BaseGenerator {
     get default() {
         return {
             askForTestOpts: prompts.askForTestOpts,
-
+            askClModulesToBeInstalled: prompts.askClModulesToBeInstalled,
             askForMoreModules: prompts.askForMoreModules,
 
             setSharedConfigOptions() {

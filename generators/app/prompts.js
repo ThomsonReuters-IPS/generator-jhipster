@@ -25,6 +25,7 @@ module.exports = {
     askForModuleName,
     askFori18n,
     askForTestOpts,
+    askClModulesToBeInstalled,
     askForMoreModules
 };
 
@@ -168,6 +169,32 @@ function askForMoreModules() {
             done();
         }
     });
+}
+
+function askClModulesToBeInstalled() {
+    this.log("xxxxxxxxxxxxxxxxxxxxxxxxx");
+    const done = this.async();
+    const choices = [{
+        value: 'value1',
+        name: 'name1'
+    },
+    {
+        value: 'value2',
+        name: 'name2'
+    }];
+    this.prompt({
+        type: 'checkbox',
+        name: 'otherClModules',
+        message: 'Which other Clarivate modules would you like to use?',
+        choices,
+        default: []
+    }).then(prompt => {
+        // [ {name: [moduleName], version:[version]}, ...]
+        this.log("ddddd" + prompt.otherClModules )
+        //this.otherClModules.push({ name: prompt.name, value: prompt.value });
+        //this.configOptions.otherClModules = this.otherClModules;
+        done();
+     });
 }
 
 function askModulesToBeInstalled(done, generator) {
