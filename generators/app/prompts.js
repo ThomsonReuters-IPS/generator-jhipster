@@ -215,9 +215,9 @@ function askClModulesToBeInstalled(done, generator) {
                 .then(prompt => {
                     // [ {name: [moduleName], version:[version]}, ...]
                     prompt.clModules.forEach(module => {
-                        generator.clModules.push({ name: module.name, version: module.version });
+                        generator.otherClModules.push({ name: module.name, version: module.version });
                     });
-                    generator.configOptions.clModules = generator.clModules;
+                    generator.configOptions.otherClModules = generator.otherClModules;
                     done();
                 });
         } else {

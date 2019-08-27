@@ -275,6 +275,7 @@ module.exports = class extends BaseGenerator {
                 if (this.jhipsterVersion === undefined) {
                     this.jhipsterVersion = this.config.get('jhipsterVersion');
                 }
+                this.otherClModules = this.config.get('otherClModules') || [];
                 this.otherModules = this.config.get('otherModules') || [];
                 if (this.blueprints && this.blueprints.length > 0) {
                     this.blueprints.forEach(blueprint => {
@@ -323,6 +324,7 @@ module.exports = class extends BaseGenerator {
                 this.configOptions.skipI18nQuestion = true;
                 this.configOptions.baseName = this.baseName;
                 this.configOptions.logo = false;
+                this.configOptions.otherClModules = this.otherClModules;
                 this.configOptions.otherModules = this.otherModules;
                 this.generatorType = 'app';
                 if (this.applicationType === 'microservice') {
@@ -401,6 +403,7 @@ module.exports = class extends BaseGenerator {
         return {
             askForTestOpts: prompts.askForTestOpts,
             askClModulesToBeInstalled: prompts.askClModulesToBeInstalled,
+            askForMoreClModules: prompts.askForMoreClModules,
             askForMoreModules: prompts.askForMoreModules,
 
             setSharedConfigOptions() {
@@ -426,6 +429,7 @@ module.exports = class extends BaseGenerator {
                     entitySuffix: this.entitySuffix,
                     dtoSuffix: this.dtoSuffix,
                     skipCheckLengthOfIdentifier: this.skipCheckLengthOfIdentifier,
+                    otherClModules: this.otherClModules,
                     otherModules: this.otherModules,
                     enableTranslation: this.enableTranslation,
                     clientPackageManager: this.clientPackageManager
