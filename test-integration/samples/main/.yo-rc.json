@@ -1,0 +1,36 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.clarivate.my_app"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "microservice",
+    "baseName": "main",
+    "packageName": "com.clarivate.my_app",
+    "packageFolder": "com/clarivate/my_app",
+    "serverPort": "8081",
+    "authenticationType": "none",
+    "cacheProvider": "no",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "no",
+    "devDatabaseType": "no",
+    "prodDatabaseType": "no",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YjRlMzUxMzhkMGMxYzJmZjk2YzA4NjE4NDdmZjdiZmJlOGRhMzgwMDg4MTE3Y2YzZTZmYWRjM2VjYjRiYjY3ODYwYzExNjA4YjM3Nzg3NzFjMjE3OTRkMTM5M2U3ZTMxMDFjNjZkZGY2YjcxMTUyNGVhY2FlZjc4Zjg0OGMyMjE=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

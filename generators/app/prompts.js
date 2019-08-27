@@ -25,7 +25,7 @@ module.exports = {
     askForModuleName,
     askFori18n,
     askForTestOpts,
-    askClModulesToBeInstalled,
+    askForMoreClModules,
     askForMoreModules
 };
 
@@ -151,11 +151,18 @@ function askForTestOpts(meta) {
     });
 }
 
+function askForMoreClModules() {
+    if (this.existingProject) {
+        return;
+    }
+    const done = this.async();
+    askClModulesToBeInstalled(done, this)
+}
+
 function askForMoreModules() {
     if (this.existingProject) {
         return;
     }
-
     const done = this.async();
     this.prompt({
         type: 'confirm',
@@ -171,30 +178,56 @@ function askForMoreModules() {
     });
 }
 
-function askClModulesToBeInstalled() {
-    this.log("xxxxxxxxxxxxxxxxxxxxxxxxx");
-    const done = this.async();
-    const choices = [{
-        value: 'value1',
-        name: 'name1'
-    },
-    {
-        value: 'value2',
-        name: 'name2'
-    }];
-    this.prompt({
-        type: 'checkbox',
-        name: 'otherClModules',
-        message: 'Which other Clarivate modules would you like to use?',
-        choices,
-        default: []
-    }).then(prompt => {
-        // [ {name: [moduleName], version:[version]}, ...]
-        this.log("ddddd" + prompt.otherClModules )
-        //this.otherClModules.push({ name: prompt.name, value: prompt.value });
-        //this.configOptions.otherClModules = this.otherClModules;
+function askClModulesToBeInstalled(done, generator) {
+    
+    let clModulesJson = [
+        {
+            name: "generator-jhipster-terraformgenerator",
+            version: "1",
+            description: "Generator to create terraform script for security groups"
+        },{
+            name: "modTestMod",
+            version: "2",
+            description: "Just to test multiple optoins"
+        }
+    ]
+    
+
+    try {
+       // let jsonStr = JSON.stringify(clModBody);
+        //const moduleResponse = JSON.parse(clModBody);
+        const choices = [];
+        clModulesJson.forEach(modDef => {
+            choices.push({
+                value: { name: modDef.name, version: modDef.version },
+                name: `(${modDef.name}-${modDef.version}) ${modDef.description}`
+            });
+        });
+        if (choices.length > 0) {
+            generator
+                .prompt({
+                    type: 'checkbox',
+                    name: 'clModules',
+                    message: 'Which other modules would you like to use?',
+                    choices,
+                    default: []
+                })
+                .then(prompt => {
+                    // [ {name: [moduleName], version:[version]}, ...]
+                    prompt.clModules.forEach(module => {
+                        generator.clModules.push({ name: module.name, version: module.version });
+                    });
+                    generator.configOptions.clModules = generator.clModules;
+                    done();
+                });
+        } else {
+            done();
+        }
+    } catch (err) {
+        generator.warning(`Error while parsing. Please install the modules manually or try again later. ${err.message}`);
+        generator.debug('Error:', err);
         done();
-     });
+    }
 }
 
 function askModulesToBeInstalled(done, generator) {
