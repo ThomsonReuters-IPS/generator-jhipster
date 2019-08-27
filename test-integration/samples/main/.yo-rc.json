@@ -21,13 +21,27 @@
     "serviceDiscoveryType": false,
     "buildTool": "gradle",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "ZDkxNTM2MGRmNmQyNDllODQwYjAzOTZjNGM2NWE2YzQ0ODQ4MzdiYjFkZDc0YjQzOWRhZGY1MDRiYTdlYTM3MGE4MTJiY2QzYWJlZGY1YjFiMDA0ZDQ3ZDUxMGI1N2ZhYjUyZTA2YzA3MTM2NmRhNTU4NTU3NGE4YmM0OTgxYjc=",
+    "jwtSecretKey": "OWE5NWM1MGMzMmY3YjMzNGYwZmZkMGMwNWEyOGI0Y2EzMTJmMTA5YjUxNzAzZDY1NTY1MjY3OGM0YmYwYTg4ODYzZGM3ZGQ5NGE0YzcyMmQ5MDcyMGQ2YjYxZGM1ZWE2ZjdjNmE2ZjY5YjE4N2Y2YThiNjdhNmM0YzQ0NTg2NjQ=",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
     "dtoSuffix": "DTO",
-    "otherClModules": [],
-    "otherModules": [],
+    "otherClModules": [
+      {
+        "name": "generator-jhipster-terraformgenerator",
+        "version": "1"
+      },
+      {
+        "name": "modTestMod",
+        "version": "2"
+      }
+    ],
+    "otherModules": [
+      {
+        "name": "generator-jhipster-nav-element",
+        "version": "2.1.10"
+      }
+    ],
     "enableTranslation": false,
     "clientPackageManager": "npm",
     "blueprints": [],
