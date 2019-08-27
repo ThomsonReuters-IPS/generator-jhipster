@@ -359,6 +359,8 @@ module.exports = class extends BaseGenerator {
             },
 
             composeServer() {
+                this.log("xxxxxssssssssxxxx- I am here ----------");
+                this.composeWith(require.resolve('generator-jhipster-terraformGenerator/generators/app'));
                 if (this.skipServer) return;
                 const options = this.options;
                 const configOptions = this.configOptions;

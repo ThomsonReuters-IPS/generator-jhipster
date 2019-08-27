@@ -21,47 +21,13 @@
     "serviceDiscoveryType": false,
     "buildTool": "gradle",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "N2FkM2Y4MTlhYTk4MTNkNzZjM2Q5MGI3YzIwMjgxODExZTc3NjNhMDA4MTA5NWMxYjU1ZWZhMmVmMDM5ZjdhNzUzNDFkYzMyNWQwNWI5MjRmMmNiMjJjOGUwMzhiNDVmNTdkMjJkYjMzZjhhZjRmYzJjODEzNWVlY2FmNjc5YTI=",
+    "jwtSecretKey": "MjVhNzlmNjYzYTYzZDEyYjUwN2E2NjYyMTBjYjg3YmUwM2NkZjUwNjNhYjE3MTQxOWMzNTQzYzYxOWYzOWUzMmQzNjJiODYwNTFhYzc2YjRhNzZjZDE1ZTk0MGIwY2ZhNDdiYTJlNjk1Mzk2NTIzM2M2Mzg2NDU1ZmM5NTU5ZGI=",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
     "dtoSuffix": "DTO",
-    "otherClModules": [
-      {
-        "name": "generator-jhipster-terraformgenerator",
-        "version": "1"
-      },
-      {
-        "name": "modTestMod",
-        "version": "2"
-      }
-    ],
-    "otherModules": [
-      {
-        "name": "generator-jhipster-nav-element",
-        "version": "2.1.10"
-      },
-      {
-        "name": "generator-jhipster-docker",
-        "version": "2.5.0"
-      },
-      {
-        "name": "generator-jhipster-primeng",
-        "version": "3.0.0"
-      },
-      {
-        "name": "generator-jhipster-standalone-profile",
-        "version": "2.3.0"
-      },
-      {
-        "name": "generator-jhipster-swagger-cli",
-        "version": "3.0.1"
-      },
-      {
-        "name": "generator-jhipster-spring-cloud-stream",
-        "version": "1.0.0"
-      }
-    ],
+    "otherClModules": [],
+    "otherModules": [],
     "enableTranslation": false,
     "clientPackageManager": "npm",
     "blueprints": [],
