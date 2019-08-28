@@ -397,7 +397,7 @@ module.exports = class extends BaseGenerator {
             
             composeClModules(){
                 this.otherClModules.forEach(clModule => {
-                    this.composeWith(require.resolve('generator-jhipster-terraformGenerator/generators/app'));
+                    this.composeWith(require.resolve(clModule.name + '/generators/app'));
                     this.log(module.name + "xxx " + module.version) 
                 });
             },
