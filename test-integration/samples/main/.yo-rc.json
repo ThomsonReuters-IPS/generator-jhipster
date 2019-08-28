@@ -21,7 +21,7 @@
     "serviceDiscoveryType": false,
     "buildTool": "gradle",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "ZmMzZWQyN2JhZmJiOGYyN2Y1NTdlN2VmZTdkNmNmMzk2MWQ5ZDlkZDZjNjg4ZTIwNTI2MTgyNDVjODYzYmVlZTNmZmFkZDgxNzZiMTUyYzk3MzllZGQ0ODgwMzRmZjE2MDZhZTJiMDYwMzIyZjBhODIxZWIwYTJhMDU2ZTFhNGQ=",
+    "jwtSecretKey": "ZWJkZTdjOTA0MTMwOGIzNjM4OGIxZGNiYjMwODEyZjgwNGY2MzA2YzlmZTMxMzA4Zjg5MTViY2M4YjYwMWY5MjU0MDQ1YTgwYjMyZGE5ZDIzMjE0NDAyMzE4NWJhOTk3ZjRkMTg2NDRlMWVhMjM2YzBmZjI3YzAxMDE2Mjc4ZmI=",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
