@@ -395,12 +395,12 @@ module.exports = class extends BaseGenerator {
                 });
             },
             
-            composeClModules(){
-                this.otherClModules.forEach(clModule => {
-                    this.composeWith(require.resolve(clModule.name + '/generators/app'));
-                    this.log(module.name + "xxx " + module.version) 
-                });
-            },
+            // composeClModules(){
+            //     this.otherClModules.forEach(clModule => {
+            //         this.composeWith(require.resolve(clModule.name + '/generators/app'));
+            //         this.log(module.name + "xxx " + module.version) 
+            //     });
+            // },
 
             askFori18n: prompts.askFori18n
         };
@@ -412,7 +412,7 @@ module.exports = class extends BaseGenerator {
             askClModulesToBeInstalled: prompts.askClModulesToBeInstalled,
             askForMoreClModules: prompts.askForMoreClModules,
             askForMoreModules: prompts.askForMoreModules,
-
+            
             setSharedConfigOptions() {
                 this.configOptions.testFrameworks = this.testFrameworks;
                 this.configOptions.enableTranslation = this.enableTranslation;
@@ -420,7 +420,7 @@ module.exports = class extends BaseGenerator {
                 this.configOptions.languages = this.languages;
                 this.configOptions.clientPackageManager = this.clientPackageManager;
             },
-
+ 
             composeLanguages() {
                 if (this.skipI18n) return;
                 this.composeLanguagesSub(this, this.configOptions, this.generatorType);
@@ -453,7 +453,16 @@ module.exports = class extends BaseGenerator {
                 this.skipUserManagement && (config.skipUserManagement = true);
                 this.config.set(config);
             },
-
+            
+            composeClModules(){
+                try{
+                    this.otherClModules.forEach(clModule => {
+                        this.composeWith(require.resolve(clModule.name + '/generators/app'));
+                    });
+                } catch (error) {
+                    this.log.error('Error while generating clarivate modudle (it should be installed priror to execution!)' +  ': ' +  error);
+                }
+            },
             insight() {
                 const yorc = {
                     ..._.omit(this.configOptions, [
