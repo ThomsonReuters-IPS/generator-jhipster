@@ -208,7 +208,7 @@ function askClModulesToBeInstalled(done, generator) {
                 .prompt({
                     type: 'checkbox',
                     name: 'clModules',
-                    message: 'Which other modules would you like to use?',
+                    message: 'Select other linked Clarivate generators to be run (Important: they should be installed in your local environment)',
                     choices,
                     default: []
                 })

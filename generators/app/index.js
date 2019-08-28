@@ -359,8 +359,7 @@ module.exports = class extends BaseGenerator {
             },
 
             composeServer() {
-                this.log("xxxxxssssssssxxxx- I am here ----------");
-                this.composeWith(require.resolve('generator-jhipster-terraformGenerator/generators/app'));
+                this.composeWith('backbone:route');
                 if (this.skipServer) return;
                 const options = this.options;
                 const configOptions = this.configOptions;
@@ -394,6 +393,13 @@ module.exports = class extends BaseGenerator {
                     'client-hook': !this.skipClient,
                     configOptions,
                     debug: this.isDebugEnabled
+                });
+            },
+            
+            composeClModules(){
+                this.otherClModules.forEach(clModule => {
+                    this.composeWith(require.resolve('generator-jhipster-terraformGenerator/generators/app'));
+                    this.log(module.name + "xxx " + module.version) 
                 });
             },
 

@@ -1092,7 +1092,6 @@ module.exports = class extends PrivateBase {
      * @param {any} options - options to pass
      */
     composeExternalModule(npmPackageName, subGen, options) {
-        this.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
         let generatorTocall = path.join(process.cwd(), 'node_modules', npmPackageName, 'generators', subGen);
         try {
             if (!fs.existsSync(generatorTocall)) {
