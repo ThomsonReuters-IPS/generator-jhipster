@@ -359,7 +359,6 @@ module.exports = class extends BaseGenerator {
             },
 
             composeServer() {
-                this.composeWith('backbone:route');
                 if (this.skipServer) return;
                 const options = this.options;
                 const configOptions = this.configOptions;
