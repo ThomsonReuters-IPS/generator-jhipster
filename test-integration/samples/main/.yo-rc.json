@@ -21,7 +21,7 @@
     "serviceDiscoveryType": false,
     "buildTool": "gradle",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "MmJlZWE0MWI0NTE1OTM0Mjc4NWJkNDUxMDAzNDVhM2Y5OGM2MWQyNGRkOGVlM2M5MDllNTI0MjdlZDAzNDJhMDY1NDVmMGRhNWRkYWM2NjNhZjBlMzllZTljZWFiNjA5MmUzODA5MzJjMmRmNWExMzNkZTE1MjlhYTY4ZjlhZTI=",
+    "jwtSecretKey": "MDdmYzc2OTQ0YmUzMGIxZDkxZjgxOWE4ODgxZTYxYTFlYjcyN2ZhMWY2YzhlZDBjZGIzNGUyYzMyNGJmMjljMWQ3ZjJlMDVkZDY2MDg3ZWEwMzY1MzI3OWI5YjgzOGFhN2RhNjRjYzM0YmU4YTY2ODVlY2RmYTg3Mjc5M2UxZmU=",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
@@ -30,9 +30,11 @@
       {
         "name": "generator-jhipster-terraformgenerator",
         "params": {
-          "version": "1",
-          "description": "Generator to create terraform script for security groups",
-          "base_name": "main"
+          "params": {
+            "version": "1",
+            "description": "Generator to create terraform script for security groups",
+            "base_name": "main"
+          }
         }
       }
     ],
