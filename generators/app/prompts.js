@@ -183,12 +183,10 @@ function askClModulesToBeInstalled(done, generator) {
     let clModulesJson = [
         {
             name: "generator-jhipster-terraformgenerator",
-            version: "1",
-            description: "Generator to create terraform script for security groups"
+            props: {version: "1", description: "Generator to create terraform script for security groups",   base_name: generator.baseName}
         },{
             name: "modTestMod",
-            version: "2",
-            description: "Just to test multiple optoins"
+            props: {version: "2", description: "Just to test multiple optoins",   base_name: generator.baseName}
         }
     ]
     
@@ -199,8 +197,8 @@ function askClModulesToBeInstalled(done, generator) {
         const choices = [];
         clModulesJson.forEach(modDef => {
             choices.push({
-                value: { name: modDef.name, version: modDef.version },
-                name: `(${modDef.name}-${modDef.version}) ${modDef.description}`
+                value: { name: modDef.name, props: modDef.props },
+                name: `(${modDef.name}-${modDef.props.version}) ${modDef.props.description}`
             });
         });
         if (choices.length > 0) {
@@ -215,7 +213,7 @@ function askClModulesToBeInstalled(done, generator) {
                 .then(prompt => {
                     // [ {name: [moduleName], version:[version]}, ...]
                     prompt.clModules.forEach(module => {
-                        generator.otherClModules.push({ name: module.name, version: module.version });
+                        generator.otherClModules.push({ name: module.name, props: module.props });
                     });
                     generator.configOptions.otherClModules = generator.otherClModules;
                     done();
