@@ -458,7 +458,7 @@ module.exports = class extends BaseGenerator {
                 try{
                     this.otherClModules.forEach(clModule => {
                         this.log("xxxxxx " +  JSON.stringify(clModule.params))
-                        this.composeWith(require.resolve(clModule.name + '/generators/app'),"{params: " + JSON.stringify(clModule.params) + "}") ; // JSON.stringify( clModule.props));
+                        this.composeWith(require.resolve(clModule.name + '/generators/app'),clModule.params) ; // JSON.stringify( clModule.props));
                     });
                 } catch (error) {
                     this.log.error('Error while generating clarivate modudle (it should be installed priror to execution!)' +  ': ' +  error);
