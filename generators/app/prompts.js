@@ -183,10 +183,10 @@ function askClModulesToBeInstalled(done, generator) {
     let clModulesJson = [
         {
             name: "generator-jhipster-terraformgenerator",
-            params: {version: "1", description: "Generator to create terraform script for security groups",   base_name: generator.baseName}
+            params: {version: "1", description: "Generator to create terraform script for security groups",   baseName: generator.baseName}
         },{
             name: "modTestMod",
-            params: {version: "2", description: "Just to test multiple optoins",   base_name: generator.baseName}
+            params: {version: "2", description: "Just to test multiple optoins",   baseName: generator.baseName}
         }
     ]
     

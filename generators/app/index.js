@@ -394,14 +394,7 @@ module.exports = class extends BaseGenerator {
                     debug: this.isDebugEnabled
                 });
             },
-            
-            // composeClModules(){
-            //     this.otherClModules.forEach(clModule => {
-            //         this.composeWith(require.resolve(clModule.name + '/generators/app'));
-            //         this.log(module.name + "xxx " + module.version) 
-            //     });
-            // },
-
+        
             askFori18n: prompts.askFori18n
         };
     }
@@ -457,7 +450,6 @@ module.exports = class extends BaseGenerator {
             composeClModules(){
                 try{
                     this.otherClModules.forEach(clModule => {
-                        this.log("xxxxxx " +  JSON.stringify(clModule.params))
                         this.composeWith(require.resolve(clModule.name + '/generators/app'), clModule.params);
                     });
                 } catch (error) {
