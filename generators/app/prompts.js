@@ -185,8 +185,8 @@ function askClModulesToBeInstalled(done, generator) {
             name: "generator-jhipster-terraformgenerator",
             params: {version: "1", description: "Generator to create terraform script for security groups",   baseName: generator.baseName}
         },{
-            name: "modTestMod",
-            params: {version: "2", description: "Just to test multiple optoins",   baseName: generator.baseName}
+            name: "generator-jhipster-spinnakergenerator",
+            params: {version: "1", description: "Generator to create ",   baseName: generator.baseName}
         }
     ]
     
