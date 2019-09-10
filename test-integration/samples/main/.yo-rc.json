@@ -21,12 +21,29 @@
     "serviceDiscoveryType": false,
     "buildTool": "gradle",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "MzVkZDIxMmUyMDE5ZDJmZTBlNWFhMDM0NGYyMmU4OTc0NmQ5NjkxOGExNTc5YzY5OTBkMmY3MDI2MDE2ZDk0ZmMzM2I3NjJmODA2M2Y4NjVjMWIxNmI0NjY1MzUyODgyNmM4NWIwMGZmMTY2NjgzNDhhNjlhNjc5NzFhMjc4NzQ=",
+    "jwtSecretKey": "ZjIwNTExZDdlODk0YjI0ZDFjMDJhNWVkODkyYjhlNTE5ZDc4ZGU0M2I3MWJhZWIzODdhODNlNDA5ZmM1Mzk1YWNkOWRkMmQzYTExNDBmNjJhNTNhOGY2NWUzMmQ3NTVkNTA3ODQ1YjRiMzBiYjEyNTY3NDY0YTM1NDY5NmFkMWQ=",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
     "dtoSuffix": "DTO",
-    "otherClModules": [],
+    "otherClModules": [
+      {
+        "name": "generator-jhipster-terraformgenerator",
+        "params": {
+          "version": "1",
+          "description": "Generator to create terraform script for security groups",
+          "baseName": "main"
+        }
+      },
+      {
+        "name": "generator-jhipster-spinnakergenerator",
+        "params": {
+          "version": "1",
+          "description": "Generator to create ",
+          "baseName": "main"
+        }
+      }
+    ],
     "otherModules": [],
     "enableTranslation": false,
     "clientPackageManager": "npm",
