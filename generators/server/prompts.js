@@ -62,7 +62,7 @@ function askForServerSideOpts(meta) {
                     ? true
                     : 'The package name you have provided is not a valid Java package name.',
             message: 'What is your default Java package name?',
-            default: 'com.mycompany.myapp',
+            default: 'com.clarivate.' + this.baseName,
             store: true
         },
         {
