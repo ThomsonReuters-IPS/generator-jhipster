@@ -12,6 +12,7 @@
             "program": "${workspaceFolder}/cli/jhipster.js",
             "timeout": 100000,
             "args": [
+                "--skip-git"
             ],
             "cwd": "${workspaceFolder}/test-integration/samples/main/",
             "console": "integratedTerminal"
