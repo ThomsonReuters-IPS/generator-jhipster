@@ -1,13 +1,13 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.clarivate.main"
+      "packageName": "com.clarivate.edmain"
     },
     "jhipsterVersion": "6.1.2",
     "applicationType": "microservice",
-    "baseName": "main",
-    "packageName": "com.clarivate.main",
-    "packageFolder": "com/clarivate/main",
+    "baseName": "edwmain",
+    "packageName": "com.clarivate.edmain",
+    "packageFolder": "com/clarivate/edmain",
     "serverPort": "8081",
     "authenticationType": "none",
     "cacheProvider": "no",
@@ -21,29 +21,12 @@
     "serviceDiscoveryType": false,
     "buildTool": "gradle",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "ZjIwNTExZDdlODk0YjI0ZDFjMDJhNWVkODkyYjhlNTE5ZDc4ZGU0M2I3MWJhZWIzODdhODNlNDA5ZmM1Mzk1YWNkOWRkMmQzYTExNDBmNjJhNTNhOGY2NWUzMmQ3NTVkNTA3ODQ1YjRiMzBiYjEyNTY3NDY0YTM1NDY5NmFkMWQ=",
+    "jwtSecretKey": "ZGZhZDllM2Y4NzQwMmZlNmJiMmU1MWQ4NWY0YTljYTk1NGQxNGYwMTQyMDRkYjZiNmZlNDljZDFmNzE1YjJkMjFjN2Y5NTg5NzdiNzgxMTM5ZmQ4N2NhMTY0MGIzZmE2YWM3MDkyN2VjOTMxOWY1NGM3MWU5MmZiMjA2MzljNjU=",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "entitySuffix": "",
     "dtoSuffix": "DTO",
-    "otherClModules": [
-      {
-        "name": "generator-jhipster-terraformgenerator",
-        "params": {
-          "version": "1",
-          "description": "Generator to create terraform script for security groups",
-          "baseName": "main"
-        }
-      },
-      {
-        "name": "generator-jhipster-spinnakergenerator",
-        "params": {
-          "version": "1",
-          "description": "Generator to create ",
-          "baseName": "main"
-        }
-      }
-    ],
+    "otherClModules": [],
     "otherModules": [],
     "enableTranslation": false,
     "clientPackageManager": "npm",

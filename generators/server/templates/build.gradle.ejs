@@ -574,3 +574,42 @@ if (project.hasProperty("nodeInstall")) {
 <%_ } _%>
 compileJava.dependsOn processResources
 processResources.dependsOn bootBuildInfo
+
+<%_ if (serviceClEureka === true) { _%>
+    apply plugin: 'java-library-distribution'
+    apply plugin: 'net.researchgate.release'
+    apply plugin: 'nebula.ospackage'
+    def permanentPackageName = project.name
+    def rpmRelease = 1
+    def snapshot = true
+    if (snapshot) {
+        rpmRelease = 'SNAPSHOT'
+    }
+    ospackage {
+        packageName = permanentPackageName
+        release = rpmRelease
+        arch = NOARCH
+        os = LINUX
+        from(file('root/etc/reuters/springboot')) {
+            into('/etc/reuters')
+            user 'root'
+            permissionGroup 'root'
+        }
+        from('build/install/' + name) {
+            into('/opt/reuters/apps/springboot')
+            user 'springboot'
+            permissionGroup 'springboot'
+        }
+    }
+    task svcVersion {
+        doLast {
+            def file = new File("$projectDir/build/svcVersion.txt")
+            file.createNewFile()
+            file.text = """version=$version
+    applicationName=.name
+    """
+        }
+    }
+    buildRpm.dependsOn installDist
+    
+<%_ } _%>
