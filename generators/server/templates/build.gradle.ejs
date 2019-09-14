@@ -29,6 +29,9 @@ buildscript {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}"
         classpath "io.spring.gradle:propdeps-plugin:0.0.10.RELEASE"
         //jhipster-needle-gradle-buildscript-dependency - JHipster will add additional gradle build script plugins here
+        //jenksins
+        classpath 'com.netflix.nebula:gradle-ospackage-plugin:6.2.0'
+        classpath 'net.researchgate:gradle-release:2.6.0'
     }
 }
 
@@ -118,6 +121,23 @@ if (OperatingSystem.current().isWindows()) {
 
         archiveName = "runboot-classpath.jar"
         doFirst {
+            ////jenkins
+            <%_ if (serviceClEureka === true) { _%>
+            systemProperty('eureka.datacenter', 'cloud')
+            systemProperty('com.netflix.karyon.eureka.datacenter.type', 'Amazon')
+            systemProperty('eureka.environment', 'dev')
+            systemProperty('archaius.deployment.environment', 'dev')
+            systemProperty('archaius.deployment.stack', '1p')
+            systemProperty('archaius.deployment.subenvironment', 'snapshot')
+            systemProperty('eiddo.client.repoChain', '1pcommon,test')
+            systemProperty('archaius.deployment.domainName', 'dev.oneplatform.build')
+            systemProperty('archaius.deployment.region', 'us-west-2')
+            systemProperty('archaius.deployment.applicationId', '<%= baseName %>')
+            <%_ } _%>
+            manifest {
+                def classpath = sourceSets.test.runtimeClasspath.files
+                attributes "Class-Path": classpath.collect {f -> f.toURI().toString()}.join(" ")
+            }
             manifest {
                 def classpath = sourceSets.test.runtimeClasspath.files
                 attributes "Class-Path": classpath.collect {f -> f.toURI().toString()}.join(" ")
