@@ -449,11 +449,15 @@ module.exports = class extends BaseGenerator {
             
             composeClModules(){
                 try{
+                    
                     this.otherClModules.forEach(clModule => {
-                        this.composeWith(require.resolve(clModule.name + '/generators/app'), clModule.params);
+                        const modResolved = require.resolve(clModule.name + '/generators/app');
+                        this.log("modResloved:" +  modResolved)
+                        this.composeWith(modResolved, clModule.params);
                     });
                 } catch (error) {
                     this.log.error('Error while generating clarivate modudle (it should be installed priror to execution!)' +  ': ' +  error);
+                    throw error;
                 }
             },
             insight() {
